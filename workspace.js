@@ -1,5 +1,5 @@
 /* global cpdefine chilipeppr cprequire */
-cprequire_test(["inline:com-chilipeppr-workspace-tinyg"], function(ws) {
+cprequire_test(["inline:com-chilipeppr-workspace-dida"], function(ws) {
 
     console.log("initting workspace");
 
@@ -27,20 +27,20 @@ cprequire_test(["inline:com-chilipeppr-workspace-tinyg"], function(ws) {
     ws.init();
 
     // Do some niceties for testing like margins on widget and title for browser
-    $('title').html("Tinyg Workspace");
+    $('title').html("dida Workspace");
     $('body').css('padding', '10px');
 
 } /*end_test*/ );
 
 // This is the main definition of your widget. Give it a unique name.
-cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function() {
+cpdefine("inline:com-chilipeppr-workspace-dida", ["chilipeppr_ready"], function() {
     return {
         /**
          * The ID of the widget. You must define this and make it unique.
          */
-        id: "com-chilipeppr-workspace-tinyg", // Make the id the same as the cpdefine id
-        name: "Workspace / TinyG", // The descriptive name of your widget.
-        desc: `This is a workspace for ChiliPeppr's Hardware Fiddle. It is geared towards CNC machines using TinyG.`,
+        id: "com-chilipeppr-workspace-dida", // Make the id the same as the cpdefine id
+        name: "Workspace / dida", // The descriptive name of your widget.
+        desc: `This is a workspace for ChiliPeppr's Hardware Fiddle. It is geared towards CNC machines using dida.`,
         url: "(auto fill by runme.js)", // The final URL of the working widget as a single HTML file with CSS and Javascript inlined. You can let runme.js auto fill this if you are using Cloud9.
         fiddleurl: "(auto fill by runme.js)", // The edit URL. This can be auto-filled by runme.js in Cloud9 if you'd like, or just define it on your own to help people know where they can edit/fork your widget
         githuburl: "(auto fill by runme.js)", // The backing github repo
@@ -73,9 +73,10 @@ cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function
             // Most workspaces will instantiate the Serial Port JSON Server widget
             this.loadSpjsWidget();
             
+            this.loadPLCWidget();
             // Most workspaces will instantiate the Serial Port Console widget
             this.loadConsoleWidget();
-            
+                        
             // This is a huge method that was built from the original jsfiddle workspace
             // we should technically put each widget in its own method for loading
             this.loadWidgets();
@@ -147,9 +148,9 @@ cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function
                         spjs.setSingleSelectMode();
                         spjs.init({
                             isSingleSelectMode: true,
-                            defaultBuffer: "tinyg",
+                            defaultBuffer: "dida",
                             defaultBaud: 115200,
-                            bufferEncouragementMsg: 'For your device please choose the "tinyg" or "tinygg2" buffer in the pulldown and a 115200 baud rate before connecting.'
+                            bufferEncouragementMsg: 'For your device please choose the "dida" or "didag2" buffer in the pulldown and a 115200 baud rate before connecting.'
                         });
                         //spjs.showBody();
                         //spjs.consoleToggle();
@@ -160,6 +161,31 @@ cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function
 
                     });
                 }
+            );
+        },
+        
+        /**
+         * Load the PLC widget via chilipeppr.load()
+         */
+        loadPLCWidget: function(callback) {
+
+            var that = this;
+
+           chilipeppr.load(
+              "#myPLCWidget",
+              "http://raw.githubusercontent.com/jeruick/widget-plc/master/auto-generated-widget.html",
+              function() {
+                // Callback after widget loaded into #myDivWidgetPlc
+                // Now use require.js to get reference to instantiated widget
+                cprequire(
+                  ["inline:com-chilipeppr-widget-plc"], // the id you gave your widget
+                  function(myObjWidgetPlc) {
+                    // Callback that is passed reference to the newly loaded widget
+                    console.log("Widget / plc just got loaded.", myObjWidgetPlc);
+                    myObjWidgetPlc.init();
+                  }
+                );
+              }
             );
         },
         /**
@@ -1236,13 +1262,13 @@ cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function
                 }
             ); //End XYZ
             
-            // TinyG
+            // dida
             // http://jsfiddle.net/chilipeppr/XxEBZ/
-            // com-chilipeppr-tinyg
+            // com-chilipeppr-dida
             chilipeppr.load(
-                "com-chilipeppr-tinyg",
+                "com-chilipeppr-dida",
                 // Lauer's v2 (Jul 28th 2015) Fixed to {"sv":1}
-                "http://raw.githubusercontent.com/chilipeppr/widget-tinyg/master/auto-generated-widget.html",
+                "http://raw.githubusercontent.com/chilipeppr/widget-dida/master/auto-generated-widget.html",
                 // Danal's version
                 //"http://fiddle.jshell.net/Danal/6rq2wx3o/show/light/",
                 // Lauer's version
@@ -1250,13 +1276,13 @@ cpdefine("inline:com-chilipeppr-workspace-tinyg", ["chilipeppr_ready"], function
         
                 function () {
                     cprequire(
-                    ["inline:com-chilipeppr-widget-tinyg"],
+                    ["inline:com-chilipeppr-widget-dida"],
             
-                    function (tinyg) {
-                        tinyg.init();
+                    function (dida) {
+                        dida.init();
                     });
                 }
-            ); //End TinyG
+            ); //End dida
 
             // Cayenn Widget
             chilipeppr.load(
