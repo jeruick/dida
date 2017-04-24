@@ -148,9 +148,9 @@ cpdefine("inline:com-chilipeppr-workspace-dida", ["chilipeppr_ready"], function(
                         spjs.setSingleSelectMode();
                         spjs.init({
                             isSingleSelectMode: true,
-                            defaultBuffer: "dida",
+                            defaultBuffer: "tinyg",
                             defaultBaud: 115200,
-                            bufferEncouragementMsg: 'For your device please choose the "dida" or "didag2" buffer in the pulldown and a 115200 baud rate before connecting.'
+                            bufferEncouragementMsg: 'For your device please choose the "tinyg" or "tinyg2" buffer in the pulldown and a 115200 baud rate before connecting.'
                         });
                         //spjs.showBody();
                         //spjs.consoleToggle();
@@ -1262,13 +1262,13 @@ cpdefine("inline:com-chilipeppr-workspace-dida", ["chilipeppr_ready"], function(
                 }
             ); //End XYZ
             
-            // dida
+            // TinyG
             // http://jsfiddle.net/chilipeppr/XxEBZ/
-            // com-chilipeppr-dida
+            // com-chilipeppr-tinyg
             chilipeppr.load(
-                "com-chilipeppr-dida",
+                "com-chilipeppr-tinyg",
                 // Lauer's v2 (Jul 28th 2015) Fixed to {"sv":1}
-                "http://raw.githubusercontent.com/chilipeppr/widget-dida/master/auto-generated-widget.html",
+                "http://raw.githubusercontent.com/chilipeppr/widget-tinyg/master/auto-generated-widget.html",
                 // Danal's version
                 //"http://fiddle.jshell.net/Danal/6rq2wx3o/show/light/",
                 // Lauer's version
@@ -1276,13 +1276,13 @@ cpdefine("inline:com-chilipeppr-workspace-dida", ["chilipeppr_ready"], function(
         
                 function () {
                     cprequire(
-                    ["inline:com-chilipeppr-widget-dida"],
+                    ["inline:com-chilipeppr-widget-tinyg"],
             
-                    function (dida) {
-                        dida.init();
+                    function (tinyg) {
+                        tinyg.init();
                     });
                 }
-            ); //End dida
+            ); //End TinyG
 
             // Cayenn Widget
             chilipeppr.load(
