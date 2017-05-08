@@ -1244,22 +1244,20 @@ cpdefine("inline:com-chilipeppr-workspace-dida", ["chilipeppr_ready"], function(
             // XYZ
             // http://jsfiddle.net/chilipeppr/gh45j/
             chilipeppr.load(
-                "com-chilipeppr-xyz",
-                // Lauer's new widget 8/16/15
-                "http://raw.githubusercontent.com/chilipeppr/widget-axes/master/auto-generated-widget.html", 
-                // Temporary widget from Danal
-                //"http://fiddle.jshell.net/Danal/vktco1y6/show/light/", 
-                // Lauer's original core widget
-                //"http://fiddle.jshell.net/chilipeppr/gh45j/show/light/",
-        
-                function () {
-                    cprequire(
-                    ["inline:com-chilipeppr-widget-xyz"],
-            
-                    function (xyz) {
-                        xyz.init();
-                    });
-                }
+              "#com-chilipeppr-xyz",
+              "http://raw.githubusercontent.com/jeruick/widget-axes/master/auto-generated-widget.html",
+              function() {
+                // Callback after widget loaded into #myDivWidgetXyz
+                // Now use require.js to get reference to instantiated widget
+                cprequire(
+                  ["inline:com-chilipeppr-widget-xyz"], // the id you gave your widget
+                  function(myObjWidgetXyz) {
+                    // Callback that is passed reference to the newly loaded widget
+                    console.log("Widget / XYZ Axes v2 just got loaded.", myObjWidgetXyz);
+                    myObjWidgetXyz.init();
+                  }
+                );
+              }
             ); //End XYZ
             
             // TinyG
