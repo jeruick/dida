@@ -1407,23 +1407,24 @@ cpdefine("inline:com-chilipeppr-workspace-dida", ["chilipeppr_ready"], function(
                 }
             ); //End 3D Viewer
 
-            // Gcode List v3
+            // Gcode List v3    com-chilipeppr-gcode-list
             // OLD v2 http://jsfiddle.net/chilipeppr/F2Qn3/
             // NEW v3 with onQueue/onWrite/onComplete http://jsfiddle.net/chilipeppr/a4g5ds5n/
-            chilipeppr.load("#com-chilipeppr-gcode-list",
-                "http://raw.githubusercontent.com/chilipeppr/widget-gcodelist/master/auto-generated-widget.html",
-
-                function() {
-                    cprequire(
-                        ["inline:com-chilipeppr-widget-gcode"],
-
-                        function(gcodelist) {
-                            gcodelist.init({
-                                lineNumbersOnByDefault: true
-                            });
-                        }
-                    );
-                }
+            chilipeppr.load(
+              "#com-chilipeppr-gcode-list",
+              "http://raw.githubusercontent.com/jeruick/widget-gcodelist/master/auto-generated-widget.html",
+              function() {
+                // Callback after widget loaded into #myDivWidgetGcode
+                // Now use require.js to get reference to instantiated widget
+                cprequire(
+                  ["inline:com-chilipeppr-widget-gcode"], // the id you gave your widget
+                  function(myObjWidgetGcode) {
+                    // Callback that is passed reference to the newly loaded widget
+                    console.log("Widget / Gcode v8 just got loaded.", myObjWidgetGcode);
+                    myObjWidgetGcode.init();
+                  }
+                );
+              }
             ); //End Gcode List v3
 
             // Serial Port Console Log Window
