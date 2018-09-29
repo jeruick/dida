@@ -2,6 +2,7 @@
 cprequire_test(["inline:com-chilipeppr-workspace-dida"], function(ws) {
 
     console.log("initting workspace");
+    console.log('nuevo update');
 
     /**
      * The Root workspace (when you see the ChiliPeppr Header) auto Loads the Flash 
